@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Приглашение на свадьбу — Максим & Вероника</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600&family=Great+Vibes&family=Playfair+Display:wght@400;500;600;700&family=Marck+Script&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600&family=Great+Vibes&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --bg: #F5F0EB;
@@ -27,8 +27,7 @@
         body {
             font-family: 'Montserrat', sans-serif;
             background-color: var(--bg);
-            background-image:
-                radial-gradient(circle, rgba(139,115,85,0.03) 1px, transparent 1px);
+            background-image: radial-gradient(circle, rgba(139,115,85,0.03) 1px, transparent 1px);
             background-size: 40px 40px;
             color: var(--black);
             line-height: 1.7;
@@ -43,8 +42,7 @@
             width: 100%;
             height: 100%;
             background: var(--cream);
-            background-image:
-                radial-gradient(circle, rgba(139,115,85,0.05) 1px, transparent 1px);
+            background-image: radial-gradient(circle, rgba(139,115,85,0.05) 1px, transparent 1px);
             background-size: 30px 30px;
             display: flex;
             flex-direction: column;
@@ -52,13 +50,10 @@
             justify-content: center;
             z-index: 1000;
             cursor: pointer;
-            transition: opacity 0.8s ease, visibility 0.8s ease;
         }
 
         .intro-overlay.hidden {
-            opacity: 0;
-            visibility: hidden;
-            pointer-events: none;
+            display: none;
         }
 
         .intro-text {
@@ -67,7 +62,6 @@
             color: var(--dark-brown);
             letter-spacing: 4px;
             text-align: center;
-            animation: gentleFloat 3s ease-in-out infinite;
         }
 
         .intro-heart {
@@ -82,11 +76,6 @@
             color: var(--brown);
             letter-spacing: 3px;
             text-transform: uppercase;
-        }
-
-        @keyframes gentleFloat {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-12px); }
         }
 
         @keyframes heartbeat {
@@ -105,14 +94,8 @@
         }
 
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(35px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(35px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .fade-in {
@@ -142,14 +125,7 @@
             align-items: center;
             justify-content: center;
             font-size: 22px;
-            transition: all 0.3s ease;
             box-shadow: 0 3px 15px rgba(0,0,0,0.1);
-        }
-
-        .music-btn:hover {
-            background: var(--brown);
-            color: var(--white);
-            border-color: var(--brown);
         }
 
         .music-btn.playing {
@@ -167,7 +143,6 @@
         /* ========== СЕКЦИИ ========== */
         section {
             padding: 55px 0;
-            position: relative;
         }
 
         .section-box {
@@ -177,26 +152,21 @@
             padding: 45px 35px;
             margin: 20px 0;
             position: relative;
-            backdrop-filter: blur(2px);
         }
 
-        .section-box::before {
+        .section-box::before, .section-box::after {
             content: '';
             position: absolute;
-            top: -1px;
             left: 20px;
             right: 20px;
             height: 1px;
+        }
+        .section-box::before {
+            top: -1px;
             background: linear-gradient(90deg, transparent, var(--light-brown), transparent);
         }
-
         .section-box::after {
-            content: '';
-            position: absolute;
             bottom: -1px;
-            left: 20px;
-            right: 20px;
-            height: 1px;
             background: linear-gradient(90deg, transparent, var(--light-brown), transparent);
         }
 
@@ -207,23 +177,15 @@
             gap: 18px;
             padding: 35px 0;
         }
-
         .section-divider .line {
             width: 70px;
             height: 1px;
             background: var(--light-brown);
         }
-
         .section-divider .monogram {
             font-family: 'Great Vibes', cursive;
             font-size: 38px;
             color: var(--gold);
-        }
-
-        .section-divider .ornament {
-            font-size: 22px;
-            color: var(--gold);
-            letter-spacing: 8px;
         }
 
         /* ========== ГЛАВНЫЙ ЭКРАН ========== */
@@ -231,7 +193,6 @@
             text-align: center;
             padding: 30px 0 50px;
         }
-
         .hero-names {
             font-family: 'Great Vibes', cursive;
             font-size: 64px;
@@ -240,12 +201,10 @@
             line-height: 1.2;
             margin-bottom: 8px;
         }
-
         .hero-ampersand {
             color: var(--gold);
             font-style: normal;
         }
-
         .hero-date-line {
             font-family: 'Montserrat', sans-serif;
             font-size: 17px;
@@ -255,15 +214,13 @@
             color: var(--brown);
             margin-bottom: 20px;
         }
-
         .hero-arrow {
             font-size: 40px;
             color: var(--gold);
             margin: 15px 0 30px;
-            animation: gentleFloat 2s ease-in-out infinite;
         }
 
-        /* ========== ФОТО В ПРОЗРАЧНОЙ РАМКЕ ========== */
+        /* ========== ФОТО ========== */
         .photo-frame {
             position: relative;
             width: 280px;
@@ -278,22 +235,18 @@
             overflow: hidden;
             box-shadow: 0 25px 60px rgba(92, 74, 58, 0.12);
         }
-
         .photo-frame img {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
-
         .photo-frame-placeholder {
             text-align: center;
             color: var(--brown);
             opacity: 0.5;
             font-family: 'Cormorant Garamond', serif;
             font-size: 17px;
-            padding: 20px;
         }
-
         .photo-frame-placeholder .ph-icon {
             font-size: 55px;
             display: block;
@@ -310,7 +263,6 @@
             overflow: hidden;
             box-shadow: 0 6px 25px rgba(0,0,0,0.06);
         }
-
         .calendar-header {
             background: var(--dark-brown);
             color: var(--white);
@@ -321,54 +273,36 @@
             letter-spacing: 4px;
             text-transform: uppercase;
         }
-
         .calendar-body {
             padding: 18px;
         }
-
         .calendar-weekdays {
             display: grid;
             grid-template-columns: repeat(7, 1fr);
             text-align: center;
-            font-family: 'Montserrat', sans-serif;
             font-size: 11px;
             color: var(--brown);
             letter-spacing: 1px;
             margin-bottom: 10px;
         }
-
         .calendar-days {
             display: grid;
             grid-template-columns: repeat(7, 1fr);
             text-align: center;
-            font-family: 'Montserrat', sans-serif;
             font-size: 14px;
             color: var(--dark-brown);
         }
-
         .calendar-days span {
             padding: 6px;
             border-radius: 50%;
-            transition: all 0.3s ease;
         }
-
         .calendar-days .empty {
             color: transparent;
         }
-
         .calendar-days .day-15 {
             background: var(--brown);
             color: var(--white);
-            position: relative;
-            font-weight: 600;
-            animation: borderGlow 2s ease-in-out infinite;
         }
-
-        @keyframes borderGlow {
-            0%, 100% { box-shadow: 0 0 0 0 rgba(139,115,85,0.5); }
-            50% { box-shadow: 0 0 0 10px rgba(139,115,85,0); }
-        }
-
         .calendar-hearts {
             text-align: center;
             margin-top: 10px;
@@ -377,13 +311,9 @@
             letter-spacing: 4px;
         }
 
-        /* ========== ТЕКСТОВЫЕ СТИЛИ ========== */
-        .text-center {
-            text-align: center;
-        }
-
+        /* ========== ТЕКСТ ========== */
+        .text-center { text-align: center; }
         .heading-caps {
-            font-family: 'Montserrat', sans-serif;
             font-size: 15px;
             font-weight: 500;
             letter-spacing: 7px;
@@ -391,28 +321,15 @@
             color: var(--brown);
             margin-bottom: 22px;
         }
-
         .heading-script {
             font-family: 'Great Vibes', cursive;
             font-size: 48px;
             color: var(--dark-brown);
             letter-spacing: 2px;
             margin-bottom: 18px;
-            line-height: 1.2;
             text-align: center;
         }
-
-        .heading-serif {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 40px;
-            font-weight: 300;
-            color: var(--dark-brown);
-            letter-spacing: 3px;
-            margin-bottom: 18px;
-        }
-
         .text-body {
-            font-family: 'Montserrat', sans-serif;
             font-size: 15px;
             font-weight: 300;
             color: #555;
@@ -421,7 +338,6 @@
             max-width: 580px;
             margin: 0 auto;
         }
-
         .text-highlight {
             font-family: 'Cormorant Garamond', serif;
             font-size: 22px;
@@ -429,37 +345,26 @@
             font-style: italic;
         }
 
-        /* ========== ПРОГРАММА ДНЯ ========== */
+        /* ========== ПРОГРАММА ========== */
         .program-item {
             display: flex;
-            align-items: flex-start;
             gap: 25px;
             margin-bottom: 35px;
             padding-bottom: 30px;
             border-bottom: 1px dotted var(--accent);
         }
-
         .program-item:last-child {
             border-bottom: none;
             margin-bottom: 0;
             padding-bottom: 0;
         }
-
         .program-time {
-            font-family: 'Montserrat', sans-serif;
             font-size: 16px;
             font-weight: 500;
             color: var(--brown);
             min-width: 75px;
             letter-spacing: 2px;
-            flex-shrink: 0;
-            padding-top: 3px;
         }
-
-        .program-info {
-            flex: 1;
-        }
-
         .program-name {
             font-family: 'Cormorant Garamond', serif;
             font-size: 21px;
@@ -467,9 +372,7 @@
             color: var(--dark-brown);
             margin-bottom: 6px;
         }
-
         .program-desc {
-            font-family: 'Montserrat', sans-serif;
             font-size: 14px;
             color: #777;
             line-height: 1.6;
@@ -486,34 +389,24 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-family: 'Cormorant Garamond', serif;
             color: var(--brown);
             opacity: 0.6;
             font-size: 17px;
-            border: 1px solid var(--accent);
         }
-
         .btn-map {
             display: inline-block;
             padding: 15px 38px;
             border: 2px solid var(--brown);
             color: var(--brown);
             text-decoration: none;
-            font-family: 'Montserrat', sans-serif;
             font-size: 13px;
             letter-spacing: 4px;
             text-transform: uppercase;
-            transition: all 0.3s ease;
             border-radius: 6px;
             margin-top: 12px;
         }
 
-        .btn-map:hover {
-            background: var(--brown);
-            color: var(--white);
-        }
-
-        /* ========== ТАЙМЕР НА ФОТО ========== */
+        /* ========== ТАЙМЕР ========== */
         .timer-photo-block {
             position: relative;
             width: 100%;
@@ -524,61 +417,38 @@
             overflow: hidden;
             background: linear-gradient(135deg, #D5C9B8 0%, #C4B5A0 100%);
         }
-
-        .timer-photo-block .timer-overlay {
+        .timer-overlay {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
             background: rgba(92, 74, 58, 0.55);
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
         }
-
         .timer-grid {
             display: flex;
             gap: 28px;
             align-items: center;
         }
-
-        .timer-cell {
-            text-align: center;
-        }
-
+        .timer-cell { text-align: center; }
         .timer-cell .number {
             font-family: 'Cormorant Garamond', serif;
             font-size: 60px;
             font-weight: 300;
             color: var(--white);
-            line-height: 1;
         }
-
         .timer-cell .label {
-            font-family: 'Montserrat', sans-serif;
             font-size: 12px;
             letter-spacing: 4px;
             text-transform: uppercase;
             color: rgba(255,255,255,0.8);
             margin-top: 6px;
         }
-
         .timer-colon {
             font-family: 'Cormorant Garamond', serif;
             font-size: 44px;
             color: rgba(255,255,255,0.7);
-            font-weight: 300;
-        }
-
-        .timer-photo-caption {
-            text-align: center;
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 18px;
-            color: var(--brown);
-            font-style: italic;
-            margin-top: 18px;
         }
 
         /* ========== АНКЕТА ========== */
@@ -589,13 +459,8 @@
             padding: 40px 30px;
             margin-top: 25px;
         }
-
-        .form-group {
-            margin-bottom: 24px;
-        }
-
+        .form-group { margin-bottom: 24px; }
         .form-label {
-            font-family: 'Montserrat', sans-serif;
             font-size: 12px;
             font-weight: 500;
             letter-spacing: 3px;
@@ -604,37 +469,17 @@
             margin-bottom: 10px;
             display: block;
         }
-
-        .form-input,
-        .form-textarea {
+        .form-input {
             width: 100%;
             padding: 15px 18px;
             border: 1px solid var(--accent);
             border-radius: 8px;
-            font-family: 'Montserrat', sans-serif;
             font-size: 15px;
-            color: var(--black);
             background: var(--bg);
-            transition: all 0.3s ease;
             outline: none;
         }
-
-        .form-input:focus,
-        .form-textarea:focus {
-            border-color: var(--brown);
-            box-shadow: 0 0 0 4px rgba(139, 115, 85, 0.08);
-        }
-
-        .form-input::placeholder {
-            color: #bbb;
-        }
-
-        .radio-group {
-            display: flex;
-            gap: 18px;
-            flex-wrap: wrap;
-        }
-
+        .form-input:focus { border-color: var(--brown); }
+        .radio-group { display: flex; gap: 18px; flex-wrap: wrap; }
         .radio-option {
             display: flex;
             align-items: center;
@@ -643,52 +488,23 @@
             padding: 14px 24px;
             border: 1px solid var(--accent);
             border-radius: 8px;
-            transition: all 0.3s ease;
             background: var(--bg);
-            font-family: 'Montserrat', sans-serif;
-            font-size: 14px;
-            color: var(--dark-brown);
         }
-
-        .radio-option:hover {
-            border-color: var(--light-brown);
-        }
-
-        .radio-option input[type="radio"] {
-            accent-color: var(--brown);
-            width: 16px;
-            height: 16px;
-        }
-
         .drinks-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(155px, 1fr));
             gap: 10px;
         }
-
         .drink-option {
             display: flex;
             align-items: center;
             gap: 10px;
             cursor: pointer;
             padding: 12px 15px;
-            border: 1px solid transparent;
             border-radius: 8px;
-            transition: all 0.3s ease;
             background: var(--bg);
-            font-family: 'Montserrat', sans-serif;
             font-size: 14px;
-            color: var(--dark-brown);
         }
-
-        .drink-option:hover {
-            border-color: var(--light-brown);
-        }
-
-        .drink-option input[type="checkbox"] {
-            display: none;
-        }
-
         .drink-checkbox {
             width: 22px;
             height: 22px;
@@ -697,22 +513,17 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.3s ease;
-            flex-shrink: 0;
         }
-
+        .drink-option input { display: none; }
         .drink-option input:checked + .drink-checkbox {
             background: var(--brown);
             border-color: var(--brown);
         }
-
         .drink-option input:checked + .drink-checkbox::after {
             content: '✓';
             color: var(--white);
             font-size: 14px;
-            font-weight: bold;
         }
-
         .btn-submit {
             width: 100%;
             padding: 16px;
@@ -720,33 +531,19 @@
             color: var(--white);
             border: none;
             border-radius: 8px;
-            font-family: 'Montserrat', sans-serif;
             font-size: 14px;
             letter-spacing: 4px;
             text-transform: uppercase;
             cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 500;
         }
-
-        .btn-submit:hover {
-            background: var(--dark-brown);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(92, 74, 58, 0.3);
-        }
-
         .form-success {
             display: none;
             text-align: center;
             padding: 35px;
-            color: var(--brown);
-            font-family: 'Cormorant Garamond', serif;
             font-size: 24px;
+            color: var(--brown);
         }
-
-        .form-success.show {
-            display: block;
-        }
+        .form-success.show { display: block; }
 
         /* ========== ОРГАНИЗАТОР ========== */
         .organizer-block {
@@ -756,28 +553,16 @@
             border-radius: 10px;
             border: 1px solid var(--accent);
         }
-
         .organizer-name {
-            font-family: 'Cormorant Garamond', serif;
             font-size: 28px;
             color: var(--dark-brown);
             margin-bottom: 8px;
         }
-
         .organizer-phone {
-            display: inline-block;
-            font-family: 'Montserrat', sans-serif;
             font-size: 16px;
             color: var(--brown);
             text-decoration: none;
-            margin: 10px 0;
-            transition: color 0.3s;
         }
-
-        .organizer-phone:hover {
-            color: var(--dark-brown);
-        }
-
         .organizer-vk {
             display: inline-block;
             padding: 12px 28px;
@@ -785,19 +570,10 @@
             color: var(--white);
             text-decoration: none;
             border-radius: 8px;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 13px;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            transition: all 0.3s ease;
             margin-top: 12px;
         }
 
-        .organizer-vk:hover {
-            background: var(--dark-brown);
-        }
-
-        /* ========== ДЕКОРАТИВНЫЕ УГЛЫ ========== */
+        /* ========== УГОЛКИ ========== */
         .corner-decoration {
             position: absolute;
             width: 25px;
@@ -807,7 +583,6 @@
             opacity: 0.4;
             pointer-events: none;
         }
-
         .corner-tl { top: 8px; left: 8px; border-width: 1px 0 0 1px; }
         .corner-tr { top: 8px; right: 8px; border-width: 1px 1px 0 0; }
         .corner-bl { bottom: 8px; left: 8px; border-width: 0 0 1px 1px; }
@@ -822,95 +597,52 @@
             color: var(--dark-brown);
         }
 
-        /* ========== МОБИЛЬНАЯ АДАПТАЦИЯ ========== */
         @media (max-width: 600px) {
-            .hero-names {
-                font-size: 44px;
-            }
-
-            .heading-script {
-                font-size: 36px;
-            }
-
-            .heading-serif {
-                font-size: 30px;
-            }
-
-            .timer-grid {
-                gap: 15px;
-            }
-
-            .timer-cell .number {
-                font-size: 42px;
-            }
-
-            .timer-colon {
-                font-size: 30px;
-            }
-
-            .timer-photo-block {
-                height: 250px;
-            }
-
-            .calendar-mini {
-                width: 200px;
-            }
-
-            .photo-frame {
-                width: 220px;
-                height: 300px;
-            }
-
-            .drinks-grid {
-                grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-            }
-
-            .program-item {
-                flex-direction: column;
-                gap: 8px;
-            }
-
-            .section-box {
-                padding: 30px 20px;
-            }
-
-            .main-content {
-                padding: 30px 18px;
-            }
+            .hero-names { font-size: 44px; }
+            .heading-script { font-size: 36px; }
+            .timer-grid { gap: 15px; }
+            .timer-cell .number { font-size: 42px; }
+            .timer-colon { font-size: 30px; }
+            .timer-photo-block { height: 250px; }
+            .photo-frame { width: 220px; height: 300px; }
+            .program-item { flex-direction: column; gap: 8px; }
+            .section-box { padding: 30px 20px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- ========== ВСТУПИТЕЛЬНЫЙ ЭКРАН ========== -->
+    <!-- ВСТУПИТЕЛЬНЫЙ ЭКРАН -->
     <div class="intro-overlay" id="introOverlay" onclick="openInvitation()">
         <p class="intro-text">Вы получили приглашение</p>
         <div class="intro-heart">💌</div>
         <p class="intro-subtitle">Нажмите, чтобы открыть</p>
     </div>
 
-    <!-- ========== КНОПКА МУЗЫКИ ========== -->
-    <button class="music-btn" id="musicBtn" onclick="toggleMusic()" title="Включить музыку">🎵</button>
+    <!-- КНОПКА МУЗЫКИ -->
+    <button class="music-btn" id="musicBtn" onclick="toggleMusic()">🎵</button>
 
-    <!-- Скрытый аудиоплеер — Sting «Shape of My Heart» -->
-    <audio id="bgMusic" loop preload="auto" volume="0.3">
+    <!-- АУДИО -->
+    <audio id="bgMusic" loop preload="auto">
         <source src="music.mp3" type="audio/mpeg">
+    </audio>
 
-    <!-- ========== ОСНОВНОЙ КОНТЕНТ ========== -->
+    <!-- ОСНОВНОЙ КОНТЕНТ -->
     <div class="main-content" id="mainContent">
 
         <!-- ГЛАВНЫЙ ЭКРАН -->
         <section class="hero fade-in">
-            <h1 class="hero-names">
-                Максим <span class="hero-ampersand">&</span> Вероника
-            </h1>
+            <h1 class="hero-names">Максим <span class="hero-ampersand">&</span> Вероника</h1>
             <div class="hero-date-line">Август 15 2026</div>
             <div class="hero-arrow">⌄</div>
         </section>
 
-        <!-- ФОТО В ПРОЗРАЧНОЙ РАМКЕ -->
+        <!-- ФОТО -->
         <div class="photo-frame fade-in fade-in-delay-1">
-            <img src="https://sun9-36.userapi.com/s/v1/ig2/hfDCN9grwFGtyBf1VCe9A1LaZ-insVBEtzByulH37u2kyuD-2iWMswWnxed_1qcmIShloluAOysdNE_cBSzSy1Eg.jpg?quality=95&as=32x24,48x36,72x54,108x81,160x120,240x180,360x270,480x360,540x405,640x480,720x540,1080x810,1280x960,1440x1080,2560x1920&from=bu&u=-sK0mOdebU8TVV2iaFobnL7eTHhsfnFrg8HKnA1E5Yc&cs=1280x0" alt="Максим и Вероника" style="width:100%; height:100%; object-fit:cover;">
+            <div class="photo-frame-placeholder">
+                <span class="ph-icon">📸</span>
+                Здесь будет<br>ваше фото
+            </div>
         </div>
 
         <!-- РОДНЫЕ И БЛИЗКИЕ -->
@@ -940,10 +672,6 @@
 
         <!-- 15 АВГУСТА 2026 -->
         <section class="text-center fade-in section-box">
-            <span class="corner-decoration corner-tl"></span>
-            <span class="corner-decoration corner-tr"></span>
-            <span class="corner-decoration corner-bl"></span>
-            <span class="corner-decoration corner-br"></span>
             <p class="heading-caps">15 августа 2026</p>
             <p class="text-body">
                 Мы надеемся, что вы разделите с нами этот прекрасный день и сделаете его ещё особеннее.
@@ -959,47 +687,36 @@
 
         <!-- ЛОКАЦИЯ -->
         <section class="text-center fade-in section-box">
-            <span class="corner-decoration corner-tl"></span>
-            <span class="corner-decoration corner-tr"></span>
-            <span class="corner-decoration corner-bl"></span>
-            <span class="corner-decoration corner-br"></span>
             <p class="heading-caps">Локация</p>
             <p class="heading-script" style="font-size:42px;">Церемония и праздничный банкет</p>
             <p class="text-body">
                 будут проходить в банкетном зале <strong>«Оазис»</strong>
             </p>
-            <img src="https://avatars.mds.yandex.net/i?id=1ed104d61298990f06ad4f400d90aaa7db02dd4e-5883354-images-thumbs&n=13" alt="Ресторан Оазис" style="width:100%; max-width:520px; height:220px; object-fit:cover; border-radius:10px; display:block; margin:0 auto;">
-            <a href="https://yandex.ru/maps/?text=г.%20Вольск,%20ул.%20Коммунистическая,%20д.37" target="_blank" class="btn-map">Открыть на Яндекс.Картах</a>
+            <div class="venue-photo-placeholder">📸 Фото ресторана «Оазис»</div>
+            <a href="https://yandex.ru/maps/?text=г.%20Вольск,%20ул.%20Коммуническая,%20д.37" target="_blank" class="btn-map">Открыть на Яндекс.Картах</a>
         </section>
 
         <!-- ПРОГРАММА ДНЯ -->
         <section class="fade-in section-box">
-            <span class="corner-decoration corner-tl"></span>
-            <span class="corner-decoration corner-tr"></span>
-            <span class="corner-decoration corner-bl"></span>
-            <span class="corner-decoration corner-br"></span>
             <p class="heading-caps text-center">Время</p>
             <p class="heading-script" style="font-size:42px;">Программа дня</p>
-
             <div class="program-item fade-in fade-in-delay-1" style="margin-top:30px;">
                 <div class="program-time">12:45</div>
-                <div class="program-info">
+                <div>
                     <div class="program-name">Сбор гостей</div>
                     <div class="program-desc">Встречаемся и ожидаем долгожданную церемонию</div>
                 </div>
             </div>
-
             <div class="program-item fade-in fade-in-delay-2">
                 <div class="program-time">13:00</div>
-                <div class="program-info">
+                <div>
                     <div class="program-name">Регистрация</div>
                     <div class="program-desc">Немного радостных трогательных формальностей</div>
                 </div>
             </div>
-
             <div class="program-item fade-in fade-in-delay-3">
                 <div class="program-time">16:00</div>
-                <div class="program-info">
+                <div>
                     <div class="program-name">Банкет</div>
                     <div class="program-desc">Время вкусной еды, музыки, приятных пожеланий и танцев</div>
                 </div>
@@ -1015,10 +732,6 @@
 
         <!-- DRESS CODE -->
         <section class="text-center fade-in section-box">
-            <span class="corner-decoration corner-tl"></span>
-            <span class="corner-decoration corner-tr"></span>
-            <span class="corner-decoration corner-bl"></span>
-            <span class="corner-decoration corner-br"></span>
             <p class="heading-script" style="font-size:42px;">Dress-code</p>
             <p class="text-body">
                 Для нас главное — ваше присутствие!<br>
@@ -1035,21 +748,15 @@
 
         <!-- ПОДСКАЗКИ -->
         <section class="fade-in section-box">
-            <span class="corner-decoration corner-tl"></span>
-            <span class="corner-decoration corner-tr"></span>
-            <span class="corner-decoration corner-bl"></span>
-            <span class="corner-decoration corner-br"></span>
             <p class="heading-script" style="font-size:42px;">Подсказки</p>
             <p class="text-body" style="margin-bottom:30px;">
                 Мы решили собрать информацию — ответы на самые популярные вопросы
             </p>
-
             <p class="text-highlight text-center">Что дарить?</p>
             <p class="text-body" style="margin-bottom:28px;">
                 Ваша улыбка и хорошее настроение — главное для нас в этот вечер!<br>
                 Если вы захотите сделать нам ценный и нужный подарок, мы будем очень благодарны за вклад в бюджет нашей молодой семьи.
             </p>
-
             <p class="text-highlight text-center">Цветы</p>
             <p class="text-body">
                 Наш праздник будет окружён изобилием цветов, поэтому приятным комплиментом для нас вместо букета будет бутылка вашего любимого вина, которую мы откроем на ближайшем совместном празднике.
@@ -1065,10 +772,6 @@
 
         <!-- КОНТАКТЫ -->
         <section class="fade-in section-box">
-            <span class="corner-decoration corner-tl"></span>
-            <span class="corner-decoration corner-tr"></span>
-            <span class="corner-decoration corner-bl"></span>
-            <span class="corner-decoration corner-br"></span>
             <p class="heading-script" style="font-size:42px;">Контакты</p>
             <p class="text-body" style="margin-bottom:28px;">
                 Если вы заблудились по дороге или у вас возникли вопросы, не стесняйтесь обращаться к нашему организатору — она обязательно поможет!
@@ -1081,36 +784,35 @@
             </div>
         </section>
 
-        <!-- ТАЙМЕР НА ФОТО -->
-       <!-- ТАЙМЕР НА ФОТО -->
-<section class="fade-in">
-    <div class="timer-photo-block" style="background: url(https://ibb.co/b5651tV0) center/cover no-repeat;">
-        <div class="timer-overlay">
-            <div class="timer-grid" id="timerGrid">
-                <div class="timer-cell">
-                    <div class="number" id="tDays">00</div>
-                    <div class="label">Дней</div>
-                </div>
-                <div class="timer-colon">:</div>
-                <div class="timer-cell">
-                    <div class="number" id="tHours">00</div>
-                    <div class="label">Часов</div>
-                </div>
-                <div class="timer-colon">:</div>
-                <div class="timer-cell">
-                    <div class="number" id="tMinutes">00</div>
-                    <div class="label">Минут</div>
-                </div>
-                <div class="timer-colon">:</div>
-                <div class="timer-cell">
-                    <div class="number" id="tSeconds">00</div>
-                    <div class="label">Секунд</div>
+        <!-- ТАЙМЕР -->
+        <section class="fade-in">
+            <p class="heading-script" style="font-size:42px;">Фотография</p>
+            <div class="timer-photo-block">
+                <div class="timer-overlay">
+                    <div class="timer-grid">
+                        <div class="timer-cell">
+                            <div class="number" id="tDays">00</div>
+                            <div class="label">Дней</div>
+                        </div>
+                        <div class="timer-colon">:</div>
+                        <div class="timer-cell">
+                            <div class="number" id="tHours">00</div>
+                            <div class="label">Часов</div>
+                        </div>
+                        <div class="timer-colon">:</div>
+                        <div class="timer-cell">
+                            <div class="number" id="tMinutes">00</div>
+                            <div class="label">Минут</div>
+                        </div>
+                        <div class="timer-colon">:</div>
+                        <div class="timer-cell">
+                            <div class="number" id="tSeconds">00</div>
+                            <div class="label">Секунд</div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-    <p class="timer-photo-caption">До самого важного дня...</p>
-</section>
+        </section>
 
         <!-- МОНОГРАММА -->
         <div class="section-divider fade-in">
@@ -1119,249 +821,118 @@
             <span class="line"></span>
         </div>
 
-        <!-- АНКЕТА ГОСТЯ -->
+        <!-- АНКЕТА -->
         <section class="fade-in section-box">
-            <span class="corner-decoration corner-tl"></span>
-            <span class="corner-decoration corner-tr"></span>
-            <span class="corner-decoration corner-bl"></span>
-            <span class="corner-decoration corner-br"></span>
             <p class="heading-script" style="font-size:42px;">Анкета гостя</p>
             <p class="text-body" style="margin-bottom:28px;">
                 Будем очень признательны, если вы подтвердите своё присутствие и заполните анкету <strong>до 5 августа</strong>
             </p>
-
-            <div class="rsvp-form" id="rsvpFormContainer">
+            <div class="rsvp-form">
                 <form id="rsvpForm">
                     <div class="form-group">
                         <label class="form-label">Имя и фамилия</label>
-                        <input type="text" class="form-input" name="name" placeholder="Если вы будете со своей парой, укажите оба: Иван Иванов / Мария Иванова" required>
+                        <input type="text" class="form-input" name="name" placeholder="Иван Иванов / Мария Иванова" required>
                     </div>
-
                     <div class="form-group">
                         <label class="form-label">Подтвердите своё присутствие</label>
                         <div class="radio-group">
                             <label class="radio-option">
-                                <input type="radio" name="attendance" value="yes" checked>
-                                <span>Да, смогу</span>
+                                <input type="radio" name="attendance" value="yes" checked> Да, смогу
                             </label>
                             <label class="radio-option">
-                                <input type="radio" name="attendance" value="no">
-                                <span>К сожалению, не смогу</span>
+                                <input type="radio" name="attendance" value="no"> К сожалению, не смогу
                             </label>
                         </div>
                     </div>
-
                     <div class="form-group">
                         <label class="form-label">Ваши предпочтения в напитках</label>
                         <div class="drinks-grid">
-                            <label class="drink-option">
-                                <input type="checkbox" name="drinks" value="Шампанское">
-                                <span class="drink-checkbox"></span>🍾 Шампанское
-                            </label>
-                            <label class="drink-option">
-                                <input type="checkbox" name="drinks" value="Белое вино">
-                                <span class="drink-checkbox"></span>🥂 Белое вино
-                            </label>
-                            <label class="drink-option">
-                                <input type="checkbox" name="drinks" value="Красное вино">
-                                <span class="drink-checkbox"></span>🍷 Красное вино
-                            </label>
-                            <label class="drink-option">
-                                <input type="checkbox" name="drinks" value="Водка">
-                                <span class="drink-checkbox"></span>🥃 Водка
-                            </label>
-                            <label class="drink-option">
-                                <input type="checkbox" name="drinks" value="Виски">
-                                <span class="drink-checkbox"></span>🥃 Виски
-                            </label>
-                            <label class="drink-option">
-                                <input type="checkbox" name="drinks" value="Коньяк">
-                                <span class="drink-checkbox"></span>🍂 Коньяк
-                            </label>
-                            <label class="drink-option">
-                                <input type="checkbox" name="drinks" value="Джин">
-                                <span class="drink-checkbox"></span>🍸 Джин
-                            </label>
-                            <label class="drink-option">
-                                <input type="checkbox" name="drinks" value="Ром">
-                                <span class="drink-checkbox"></span>🏴‍☠️ Ром
-                            </label>
-                            <label class="drink-option">
-                                <input type="checkbox" name="drinks" value="Текила">
-                                <span class="drink-checkbox"></span>🌵 Текила
-                            </label>
-                            <label class="drink-option">
-                                <input type="checkbox" name="drinks" value="Пиво">
-                                <span class="drink-checkbox"></span>🍺 Пиво
-                            </label>
-                            <label class="drink-option">
-                                <input type="checkbox" name="drinks" value="Безалкогольное">
-                                <span class="drink-checkbox"></span>🧃 Безалкогольное
-                            </label>
+                            <label class="drink-option"><input type="checkbox" name="drinks" value="Шампанское"><span class="drink-checkbox"></span>🍾 Шампанское</label>
+                            <label class="drink-option"><input type="checkbox" name="drinks" value="Белое вино"><span class="drink-checkbox"></span>🥂 Белое вино</label>
+                            <label class="drink-option"><input type="checkbox" name="drinks" value="Красное вино"><span class="drink-checkbox"></span>🍷 Красное вино</label>
+                            <label class="drink-option"><input type="checkbox" name="drinks" value="Водка"><span class="drink-checkbox"></span>🥃 Водка</label>
+                            <label class="drink-option"><input type="checkbox" name="drinks" value="Виски"><span class="drink-checkbox"></span>🥃 Виски</label>
+                            <label class="drink-option"><input type="checkbox" name="drinks" value="Коньяк"><span class="drink-checkbox"></span>🍂 Коньяк</label>
+                            <label class="drink-option"><input type="checkbox" name="drinks" value="Джин"><span class="drink-checkbox"></span>🍸 Джин</label>
+                            <label class="drink-option"><input type="checkbox" name="drinks" value="Ром"><span class="drink-checkbox"></span>🏴‍☠️ Ром</label>
+                            <label class="drink-option"><input type="checkbox" name="drinks" value="Текила"><span class="drink-checkbox"></span>🌵 Текила</label>
+                            <label class="drink-option"><input type="checkbox" name="drinks" value="Пиво"><span class="drink-checkbox"></span>🍺 Пиво</label>
+                            <label class="drink-option"><input type="checkbox" name="drinks" value="Безалкогольное"><span class="drink-checkbox"></span>🧃 Безалкогольное</label>
                         </div>
                     </div>
-
                     <button type="submit" class="btn-submit">Отправить</button>
                 </form>
                 <div class="form-success" id="formSuccess">
                     <p>✨ Спасибо!</p>
-                    <p style="font-size:17px; margin-top:10px;">Ваша анкета отправлена.<br>С нетерпением ждём вас!</p>
+                    <p>Ваша анкета отправлена. С нетерпением ждём вас!</p>
                 </div>
             </div>
         </section>
 
-        <!-- ФУТЕР -->
-        <footer class="footer fade-in">
-            С нетерпением ждём вас!
-        </footer>
+        <footer class="footer fade-in">С нетерпением ждём вас!</footer>
 
     </div>
 
     <script>
-            // ========== ВСТУПИТЕЛЬНЫЙ ЭКРАН ==========
-    function openInvitation() {
-        document.getElementById('introOverlay').classList.add('hidden');
-        // Пытаемся запустить музыку
-        var music = document.getElementById('bgMusic');
-        if (music) {
-            music.volume = 0.3;
-            music.play().then(function() {
-                var btn = document.getElementById('musicBtn');
-                btn.classList.add('playing');
-                btn.textContent = '🎵';
-            }).catch(function() {
-                console.log('Музыка не загрузилась, но сайт открыт');
-            });
-        }
-    }
-
-    // ========== МУЗЫКА ==========
-    function toggleMusic() {
-        var music = document.getElementById('bgMusic');
-        var btn = document.getElementById('musicBtn');
-        
-        if (!music) {
-            btn.textContent = '⚠️';
-            return;
+        // ВСТУПИТЕЛЬНЫЙ ЭКРАН
+        function openInvitation() {
+            document.getElementById('introOverlay').classList.add('hidden');
         }
 
-        if (!music.paused) {
-            music.pause();
-            btn.classList.remove('playing');
-            btn.textContent = '🔇';
-            return;
-        }
-
-        music.volume = 0.3;
-        music.play().then(function() {
-            btn.classList.add('playing');
-            btn.textContent = '🎵';
-        }).catch(function() {
-            btn.textContent = '⚠️';
-        });
-    }
-
-    // ========== КАЛЕНДАРИК ==========
-    function buildCalendar() {
-        var container = document.getElementById('calendarDays');
-        if (!container) return;
-        var firstDay = 6;
-        var daysInMonth = 31;
-        var html = '';
-
-        for (var i = 0; i < firstDay; i++) {
-            html += '<span class="empty">·</span>';
-        }
-        for (var d = 1; d <= daysInMonth; d++) {
-            if (d === 15) {
-                html += '<span class="day-15">15</span>';
+        // МУЗЫКА
+        function toggleMusic() {
+            var m = document.getElementById('bgMusic');
+            var b = document.getElementById('musicBtn');
+            if (m.paused) {
+                m.play();
+                b.classList.add('playing');
             } else {
-                html += '<span>' + d + '</span>';
+                m.pause();
+                b.classList.remove('playing');
             }
         }
-        container.innerHTML = html;
-    }
-    buildCalendar();
 
-    // ========== ТАЙМЕР ==========
-    var weddingDate = new Date('2026-08-15T13:00:00');
+        // КАЛЕНДАРИК
+        (function(){
+            var c = document.getElementById('calendarDays');
+            var h = '';
+            for (var i=0; i<6; i++) h += '<span class="empty">·</span>';
+            for (var d=1; d<=31; d++) {
+                h += (d===15) ? '<span class="day-15">15</span>' : '<span>'+d+'</span>';
+            }
+            c.innerHTML = h;
+        })();
 
-    function updateTimer() {
-        var now = new Date();
-        var diff = weddingDate - now;
-
-        var daysEl = document.getElementById('tDays');
-        var hoursEl = document.getElementById('tHours');
-        var minutesEl = document.getElementById('tMinutes');
-        var secondsEl = document.getElementById('tSeconds');
-
-        if (!daysEl) return;
-
-        if (diff <= 0) {
-            daysEl.textContent = '00';
-            hoursEl.textContent = '00';
-            minutesEl.textContent = '00';
-            secondsEl.textContent = '00';
-            return;
+        // ТАЙМЕР
+        var wd = new Date('2026-08-15T13:00:00');
+        function tick(){
+            var n = new Date();
+            var diff = wd - n;
+            if(diff<=0){
+                document.getElementById('tDays').textContent='00';
+                document.getElementById('tHours').textContent='00';
+                document.getElementById('tMinutes').textContent='00';
+                document.getElementById('tSeconds').textContent='00';
+                return;
+            }
+            var d = Math.floor(diff/86400000);
+            var h = Math.floor((diff%86400000)/3600000);
+            var m = Math.floor((diff%3600000)/60000);
+            var s = Math.floor((diff%60000)/1000);
+            document.getElementById('tDays').textContent = String(d).padStart(2,'0');
+            document.getElementById('tHours').textContent = String(h).padStart(2,'0');
+            document.getElementById('tMinutes').textContent = String(m).padStart(2,'0');
+            document.getElementById('tSeconds').textContent = String(s).padStart(2,'0');
         }
+        tick();
+        setInterval(tick, 1000);
 
-        var days = Math.floor(diff / (1000 * 60 * 60 * 24));
-        var hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        var minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-        var seconds = Math.floor((diff % (1000 * 60)) / 1000);
-
-        daysEl.textContent = String(days).padStart(2, '0');
-        hoursEl.textContent = String(hours).padStart(2, '0');
-        minutesEl.textContent = String(minutes).padStart(2, '0');
-        secondsEl.textContent = String(seconds).padStart(2, '0');
-    }
-    updateTimer();
-    setInterval(updateTimer, 1000);
-
-    // ========== АНКЕТА ==========
-    var rsvpForm = document.getElementById('rsvpForm');
-    if (rsvpForm) {
-        rsvpForm.addEventListener('submit', function(e) {
+        // АНКЕТА
+        document.getElementById('rsvpForm').addEventListener('submit', function(e){
             e.preventDefault();
-
-            var formData = new FormData(this);
-            var checkedDrinks = document.querySelectorAll('input[name="drinks"]:checked');
-            var drinksList = Array.from(checkedDrinks).map(function(cb) { return cb.value; }).join(', ') || 'Не указано';
-
-            var data = {
-                name: formData.get('name'),
-                attendance: formData.get('attendance') === 'yes' ? 'Да, смогу' : 'К сожалению, не смогу',
-                drinks: drinksList
-            };
-
-            console.log('Данные анкеты:', data);
-
-            document.getElementById('rsvpForm').style.display = 'none';
+            document.getElementById('rsvpForm').style.display='none';
             document.getElementById('formSuccess').classList.add('show');
         });
-    }
-
-    // ========== АНИМАЦИЯ ПРИ СКРОЛЛЕ ==========
-    var fadeElements = document.querySelectorAll('.fade-in');
-    if (fadeElements.length > 0 && 'IntersectionObserver' in window) {
-        var observer = new IntersectionObserver(function(entries) {
-            entries.forEach(function(entry) {
-                if (entry.isIntersecting) {
-                    entry.target.style.animationPlayState = 'running';
-                }
-            });
-        }, { threshold: 0.1 });
-
-        fadeElements.forEach(function(el) {
-            observer.observe(el);
-        });
-    } else {
-        // Если IntersectionObserver не поддерживается — показываем всё сразу
-        fadeElements.forEach(function(el) {
-            el.style.opacity = '1';
-            el.style.animation = 'none';
-        });
-    }
     </script>
 
 </body>
