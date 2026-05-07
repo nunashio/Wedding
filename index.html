@@ -1218,118 +1218,117 @@
     </div>
 
     <script>
-        // ========== ВСТУПИТЕЛЬНЫЙ ЭКРАН ==========
-        function openInvitation() {
-            document.getElementById('introOverlay').classList.add('hidden');
-            // Пытаемся запустить музыку
-            const music = document.getElementById('bgMusic');
+            // ========== ВСТУПИТЕЛЬНЫЙ ЭКРАН ==========
+    function openInvitation() {
+        document.getElementById('introOverlay').classList.add('hidden');
+        // Пытаемся запустить музыку
+        var music = document.getElementById('bgMusic');
+        if (music) {
             music.volume = 0.3;
-            const playPromise = music.play();
-            if (playPromise !== undefined) {
-                playPromise.then(() => {
-                    document.getElementById('musicBtn').classList.add('playing');
-                    document.getElementById('musicBtn').textContent = '🎵';
-                }).catch(() => {
-                    // Пробуем альтернативный источник
-                    const altMusic = document.getElementById('bgMusicAlt');
-                    altMusic.volume = 0.3;
-                    altMusic.play().then(() => {
-                        document.getElementById('musicBtn').classList.add('playing');
-                        document.getElementById('musicBtn').textContent = '🎵';
-                    }).catch(() => {
-                        console.log('Автовоспроизведение заблокировано браузером. Нажмите кнопку музыки.');
-                    });
-                });
-            }
+            music.play().then(function() {
+                var btn = document.getElementById('musicBtn');
+                btn.classList.add('playing');
+                btn.textContent = '🎵';
+            }).catch(function() {
+                console.log('Музыка не загрузилась, но сайт открыт');
+            });
+        }
+    }
+
+    // ========== МУЗЫКА ==========
+    function toggleMusic() {
+        var music = document.getElementById('bgMusic');
+        var btn = document.getElementById('musicBtn');
+        
+        if (!music) {
+            btn.textContent = '⚠️';
+            return;
         }
 
-        // ========== МУЗЫКА ==========
-        function toggleMusic() {
-            const music = document.getElementById('bgMusic');
-            const altMusic = document.getElementById('bgMusicAlt');
-            const btn = document.getElementById('musicBtn');
-
-            if (!music.paused) {
-                music.pause();
-                btn.classList.remove('playing');
-                btn.textContent = '🔇';
-                return;
-            }
-
-            music.volume = 0.3;
-            const playPromise = music.play();
-            if (playPromise !== undefined) {
-                playPromise.then(() => {
-                    btn.classList.add('playing');
-                    btn.textContent = '🎵';
-                }).catch(() => {
-                    altMusic.volume = 0.3;
-                    altMusic.play().then(() => {
-                        btn.classList.add('playing');
-                        btn.textContent = '🎵';
-                    }).catch(() => {
-                        btn.textContent = '⚠️';
-                        alert('Не удалось загрузить музыку. Возможно, ссылка недоступна. Давай зальём mp3-файл на сайт.');
-                    });
-                });
-            }
+        if (!music.paused) {
+            music.pause();
+            btn.classList.remove('playing');
+            btn.textContent = '🔇';
+            return;
         }
 
-        // ========== КАЛЕНДАРИК ==========
-        function buildCalendar() {
-            const container = document.getElementById('calendarDays');
-            const firstDay = 6; // суббота, август 2026
-            const daysInMonth = 31;
-            let html = '';
+        music.volume = 0.3;
+        music.play().then(function() {
+            btn.classList.add('playing');
+            btn.textContent = '🎵';
+        }).catch(function() {
+            btn.textContent = '⚠️';
+        });
+    }
 
-            for (let i = 0; i < firstDay; i++) {
-                html += '<span class="empty">·</span>';
-            }
-            for (let d = 1; d <= daysInMonth; d++) {
-                if (d === 15) {
-                    html += '<span class="day-15">15</span>';
-                } else {
-                    html += '<span>' + d + '</span>';
-                }
-            }
-            container.innerHTML = html;
+    // ========== КАЛЕНДАРИК ==========
+    function buildCalendar() {
+        var container = document.getElementById('calendarDays');
+        if (!container) return;
+        var firstDay = 6;
+        var daysInMonth = 31;
+        var html = '';
+
+        for (var i = 0; i < firstDay; i++) {
+            html += '<span class="empty">·</span>';
         }
-        buildCalendar();
-
-        // ========== ТАЙМЕР ==========
-        const weddingDate = new Date('2026-08-15T13:00:00');
-
-        function updateTimer() {
-            const now = new Date();
-            const diff = weddingDate - now;
-
-            if (diff <= 0) {
-                ['tDays','tHours','tMinutes','tSeconds'].forEach(id => document.getElementById(id).textContent = '00');
-                return;
+        for (var d = 1; d <= daysInMonth; d++) {
+            if (d === 15) {
+                html += '<span class="day-15">15</span>';
+            } else {
+                html += '<span>' + d + '</span>';
             }
-
-            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-
-            document.getElementById('tDays').textContent = String(days).padStart(2, '0');
-            document.getElementById('tHours').textContent = String(hours).padStart(2, '0');
-            document.getElementById('tMinutes').textContent = String(minutes).padStart(2, '0');
-            document.getElementById('tSeconds').textContent = String(seconds).padStart(2, '0');
         }
-        updateTimer();
-        setInterval(updateTimer, 1000);
+        container.innerHTML = html;
+    }
+    buildCalendar();
 
-        // ========== АНКЕТА ==========
-        document.getElementById('rsvpForm').addEventListener('submit', function(e) {
+    // ========== ТАЙМЕР ==========
+    var weddingDate = new Date('2026-08-15T13:00:00');
+
+    function updateTimer() {
+        var now = new Date();
+        var diff = weddingDate - now;
+
+        var daysEl = document.getElementById('tDays');
+        var hoursEl = document.getElementById('tHours');
+        var minutesEl = document.getElementById('tMinutes');
+        var secondsEl = document.getElementById('tSeconds');
+
+        if (!daysEl) return;
+
+        if (diff <= 0) {
+            daysEl.textContent = '00';
+            hoursEl.textContent = '00';
+            minutesEl.textContent = '00';
+            secondsEl.textContent = '00';
+            return;
+        }
+
+        var days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+        daysEl.textContent = String(days).padStart(2, '0');
+        hoursEl.textContent = String(hours).padStart(2, '0');
+        minutesEl.textContent = String(minutes).padStart(2, '0');
+        secondsEl.textContent = String(seconds).padStart(2, '0');
+    }
+    updateTimer();
+    setInterval(updateTimer, 1000);
+
+    // ========== АНКЕТА ==========
+    var rsvpForm = document.getElementById('rsvpForm');
+    if (rsvpForm) {
+        rsvpForm.addEventListener('submit', function(e) {
             e.preventDefault();
 
-            const formData = new FormData(this);
-            const checkedDrinks = document.querySelectorAll('input[name="drinks"]:checked');
-            const drinksList = Array.from(checkedDrinks).map(cb => cb.value).join(', ') || 'Не указано';
+            var formData = new FormData(this);
+            var checkedDrinks = document.querySelectorAll('input[name="drinks"]:checked');
+            var drinksList = Array.from(checkedDrinks).map(function(cb) { return cb.value; }).join(', ') || 'Не указано';
 
-            const data = {
+            var data = {
                 name: formData.get('name'),
                 attendance: formData.get('attendance') === 'yes' ? 'Да, смогу' : 'К сожалению, не смогу',
                 drinks: drinksList
@@ -1340,19 +1339,29 @@
             document.getElementById('rsvpForm').style.display = 'none';
             document.getElementById('formSuccess').classList.add('show');
         });
+    }
 
-        // ========== АНИМАЦИЯ ПРИ СКРОЛЛЕ ==========
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
+    // ========== АНИМАЦИЯ ПРИ СКРОЛЛЕ ==========
+    var fadeElements = document.querySelectorAll('.fade-in');
+    if (fadeElements.length > 0 && 'IntersectionObserver' in window) {
+        var observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
                 if (entry.isIntersecting) {
                     entry.target.style.animationPlayState = 'running';
                 }
             });
         }, { threshold: 0.1 });
 
-        document.querySelectorAll('.fade-in').forEach(el => {
+        fadeElements.forEach(function(el) {
             observer.observe(el);
         });
+    } else {
+        // Если IntersectionObserver не поддерживается — показываем всё сразу
+        fadeElements.forEach(function(el) {
+            el.style.opacity = '1';
+            el.style.animation = 'none';
+        });
+    }
     </script>
 
 </body>
